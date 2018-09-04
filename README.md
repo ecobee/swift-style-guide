@@ -104,9 +104,10 @@ func pancake(with syrup: Syrup) -> Pancake {
 
 ```swift
 // Xcode indentation for a function declaration that spans multiple lines
-func myFunctionWithManyParameters(parameterOne: String,
-                                  parameterTwo: String,
-                                  parameterThree: String)
+func myFunctionWithManyParameters(
+    parameterOne: String,
+    parameterTwo: String,
+    parameterThree: String)
 {
     // Xcode indents to here for this kind of statement
     print("\(parameterOne) \(parameterTwo) \(parameterThree)")
