@@ -945,8 +945,6 @@ guard let meal = Meal(rawValue: string) else {
 guard let thingOne = thingOne else { 
     return
 }
-
-
 ```
 
 ## 4. Documentation/Comments
