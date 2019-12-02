@@ -837,9 +837,8 @@ func eatDoughnut(at index: Int) {
 
 ```swift
 // PREFERRED
-guard let monkeyIsland = monkeyIsland else {
-    return
-}
+guard let monkeyIsland = monkeyIsland else { return }
+
 bookVacation(on: monkeyIsland)
 bragAboutVacation(at: monkeyIsland)
 
@@ -866,14 +865,10 @@ if operationFailed {
 }
 
 // a `guard` statement is readable here
-guard isSuccessful else {
-    return
-}
+guard isSuccessful else { return }
 
 // double negative logic like this can get hard to read - i.e. don't do this
-guard !operationFailed else {
-    return
-}
+guard !operationFailed else { return }
 ```
 
 * **3.11.4** If choosing between two different states, it makes more sense to use an `if` statement as opposed to a `guard` statement.
@@ -913,9 +908,7 @@ if let woodchuck = woodchuck, canChuckWood(woodchuck) {
 // combined because we just return
 guard let thingOne = thingOne,
     let thingTwo = thingTwo,
-    let thingThree = thingThree else {
-    return
-}
+    let thingThree = thingThree else { return }
 
 // separate statements because we handle a specific error in each case
 guard let thingOne = thingOne else {
@@ -931,17 +924,29 @@ guard let thingThree = thingThree else {
 }
 ```
 
-* **3.11.7** Don’t use one-liners for `guard` statements.
+* **3.11.7** For single-statement returning guards, prefer to maintain the return statement inline.
 
 
 ```swift
 // PREFERRED
-guard let thingOne = thingOne else {
-    return
+guard let thingOne = thingOne else { return nil }
+
+guard let name = json["name"] as? String,
+  let coordinatesJSON = json["coordinates"] as? [String: Double],
+  let latitude = coordinatesJSON["lat"],
+  let longitude = coordinatesJSON["lng"],
+  let mealsJSON = json["meals"] as? [String] else { return }
+  
+guard let meal = Meal(rawValue: string) else {
+    throw SerializationError.invalid("meals", string)
 }
 
 // NOT PREFERRED
-guard let thingOne = thingOne else { return }
+guard let thingOne = thingOne else { 
+    return
+}
+
+
 ```
 
 ## 4. Documentation/Comments
