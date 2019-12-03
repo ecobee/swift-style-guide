@@ -924,7 +924,7 @@ guard let thingThree = thingThree else {
 }
 ```
 
-* **3.11.7** For single-statement returning guards, prefer to maintain the return statement inline.
+* **3.11.7** On guard statements, prefer to maintain the return statement inline if the guard has a single statement and the returned value is reduced.
 
 
 ```swift
@@ -935,7 +935,10 @@ guard let name = json["name"] as? String,
   let coordinatesJSON = json["coordinates"] as? [String: Double],
   let latitude = coordinatesJSON["lat"],
   let longitude = coordinatesJSON["lng"],
-  let mealsJSON = json["meals"] as? [String] else { return }
+  let mealsJSON = json["meals"] as? [String] else 
+{
+  return 
+}
   
 guard let meal = Meal(rawValue: string) else {
     throw SerializationError.invalid("meals", string)
@@ -945,6 +948,8 @@ guard let meal = Meal(rawValue: string) else {
 guard let thingOne = thingOne else { 
     return
 }
+
+guard let thingOne = thingOne else { return foo?.value != nil ? true : false }
 ```
 
 ## 4. Documentation/Comments
