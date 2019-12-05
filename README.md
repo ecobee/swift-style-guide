@@ -908,7 +908,10 @@ if let woodchuck = woodchuck, canChuckWood(woodchuck) {
 // combined because we just return
 guard let thingOne = thingOne,
     let thingTwo = thingTwo,
-    let thingThree = thingThree else { return }
+    let thingThree = thingThree else 
+{ 
+    return 
+}
 
 // separate statements because we handle a specific error in each case
 guard let thingOne = thingOne else {
