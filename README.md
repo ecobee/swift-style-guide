@@ -1044,19 +1044,25 @@ func myFunction() {
 * **4.2.1** Always leave a space after `//`.
 * **4.2.2** Always leave comments on their own line.
 * **4.2.3** When using `// MARK: - whatever`, leave a newline after the comment.
+* **4.2.4** Use `// MARK: - whatever` for object definitions
+* **4.2.4** Use `// MARK: whatever` for extensions and code seperation
 
 ```swift
+
+// MARK: - Pirate
+
 class Pirate {
 
-    // MARK: - instance properties
-
-    private let pirateName: String
-
-    // MARK: - initialization
+    // MARK: Initalizer
 
     init() {
         /* ... */
     }
+
+    // MARK: instance properties
+
+    private let pirateName: String
+
 
 }
 ```
