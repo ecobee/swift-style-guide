@@ -1045,7 +1045,7 @@ func myFunction() {
 * **4.2.2** Always leave comments on their own line.
 * **4.2.3** When using `// MARK: - whatever`, leave a empty line before and after the comment.
 * **4.2.4** Use `// MARK: - whatever` for type definitions (excluding nested types)
-* **4.2.4** Use `// MARK: whatever` for extensions and code seperation
+* **4.2.4** Use `// MARK: whatever` for nested type definitions, extensions, and code seperation.
 
 ```swift
 
