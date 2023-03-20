@@ -1043,26 +1043,47 @@ func myFunction() {
 
 * **4.2.1** Always leave a space after `//`.
 * **4.2.2** Always leave comments on their own line.
-* **4.2.3** When using `// MARK: - whatever`, leave a empty line before and after the comment.
-* **4.2.4** Use `// MARK: - whatever` for type definitions (excluding nested types)
-* **4.2.4** Use `// MARK: whatever` for nested type definitions, extensions, and code seperation.
+* **4.2.3** When using `// MARK: - Whatever`, leave a empty line before and after the comment.
+* **4.2.4** Use `// MARK: - Whatever` for type definitions (excluding nested types)
+* **4.2.4** Use `// MARK: Whatever` for nested type definitions, extensions, and code seperation.
 
 ```swift
 
-// MARK: - Pirate
+// MARK: - User
 
-class Pirate {
+class User {
 
-    // MARK: Initalizer
+    // MARK: EyeColor
+    
+    enum EyeColor {
+        case blue, green, brown
+    }
+
+    // MARK: Lifecycle
 
     init() {
         /* ... */
     }
+    
+    deinit() {
+        /* ... */
+    }
+    
+    // MARK: Public
+    
+    public let name: String
+    
+    // MARK: Internal
+    
+    let eyeColor: EyeColor
 
-    // MARK: instance properties
+    // MARK: Private
 
-    private let pirateName: String
-
+    private let socialSecurityNumber: Int
+    
+}
+    
+```
 
 }
 ```
