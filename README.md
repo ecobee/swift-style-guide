@@ -23,7 +23,7 @@ This guide was last updated for Swift 3.0 on September 26th, 2017.
         - [3.9 Arrays](#39-arrays)
         - [3.10 Error Handling](#310-error-handling)
         - [3.11 Using `guard` Statements](#311-using-guard-statements)
-        - [3.12 Attached Macros and Property Wrappers](#312-attached-macros)
+        - [3.12 Attached Macros and Property Wrappers](#312-attached-macros-and-property-wrappers)
     - [4. Documentation/Comments](#4-documentationcomments)
         - [4.1 Documentation](#41-documentation)
         - [4.2 Other Commenting Guidelines](#42-other-commenting-guidelines)
