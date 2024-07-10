@@ -729,7 +729,7 @@ doSomething(1.0, success: { (parameter1) in
 })
 ```
 
-* **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor.
+* **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor. This allows us to add more code to the Task that we may not need to be done on the main actor.
 
 ```swift
 @MainActor
