@@ -23,6 +23,7 @@ This guide was last updated for Swift 3.0 on September 26th, 2017.
         - [3.9 Arrays](#39-arrays)
         - [3.10 Error Handling](#310-error-handling)
         - [3.11 Using `guard` Statements](#311-using-guard-statements)
+        - [3.12 Attached Macros and Property Wrappers](#312-attached-macros)
     - [4. Documentation/Comments](#4-documentationcomments)
         - [4.1 Documentation](#41-documentation)
         - [4.2 Other Commenting Guidelines](#42-other-commenting-guidelines)
@@ -728,6 +729,23 @@ doSomething(1.0, success: { (parameter1) in
 })
 ```
 
+* **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor.
+
+```swift
+@MainActor
+func updateUI() { ... }
+
+// PREFERED
+Task {
+    await updateUI()
+}
+
+// NOT PREFERED
+Task { @MainActor in
+    updateUI()
+}
+```
+
 ### 3.9 Arrays
 
 * **3.9.1** In general, avoid accessing an array directly with subscripts. When possible, use accessors such as `.first` or `.last`, which are optional and won’t crash. Prefer using a `for item in items` syntax when possible as opposed to something like `for i in 0 ..< items.count`. If you need to access an array subscript directly, make sure to do proper bounds checking. You can use `for (index, value) in items.enumerated()` to get both the index and the value.
@@ -953,6 +971,20 @@ guard let thingOne = thingOne else {
 }
 
 guard let thingOne = thingOne else { return foo?.value != nil ? true : false }
+```
+
+### 3.12 Attached Macros and Property Wrappers
+
+When adding attached macros or property wrappers (uses `@` symbol) to your code, they should appear on a line above class and func declarations, and on the same line as property declarations.
+
+```swift
+@MainActor
+class UIUpdater { ... }
+
+@ViewBuilder
+func makeView() { ... }
+
+@State var number = 1
 ```
 
 ## 4. Documentation/Comments
