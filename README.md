@@ -729,7 +729,9 @@ doSomething(1.0, success: { (parameter1) in
 })
 ```
 
-* **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor. This allows us to add more code to the Task that we may not need to be done on the main actor.
+* **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor.
+
+This allows us to add more code to the Task that we may not need to be done on the main actor. If the `@MainActor` func drops the main actor requirement in the future, Xcode will give us a warning to remove `await` keyword, rather than continueing to run the Task on the main actor unnecessarily.
 
 ```swift
 @MainActor
