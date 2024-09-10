@@ -1077,9 +1077,9 @@ func myFunction() {
 
 * **4.2.1** Always leave a space after `//`.
 * **4.2.2** Always leave comments on their own line.
-* **4.2.3** When using `// MARK: - Whatever`, leave a empty line before and after the comment.
-* **4.2.4** Use `// MARK: - Whatever` for type definitions (excluding nested types)
-* **4.2.4** Use `// MARK: Whatever` for nested type definitions, extensions, and code seperation.
+* **4.2.3** When using `MARK`s, leave a empty line before and after the comment.
+* **4.2.4** Use `// MARK: - Whatever` for global type definitions (excluding nested types).
+* **4.2.4** Use `// MARK: Whatever` for nested type definitions, extensions, and access levels.
 
 ```swift
 
@@ -1116,8 +1116,15 @@ class User {
     private let socialSecurityNumber: Int
     
 }
-    
-```
+
+// MARK: Identifiable
+
+extension User: Identifiable {
+
+    // MARK: Internal
+
+    var id: String { socialSecurityNumber }
 
 }
+    
 ```
