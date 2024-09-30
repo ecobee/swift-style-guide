@@ -35,6 +35,7 @@ This guide was last updated for Swift 3.0 on September 26th, 2017.
 * **1.3** Ensure that there is a newline at the end of every file.
 * **1.4** Ensure that there is no trailing whitespace anywhere (Xcode->Preferences->Text Editing->Automatically trim trailing whitespace + Including whitespace-only lines).
 * **1.5** Do not place opening braces on new lines - we use the [1TBS style](https://en.m.wikipedia.org/wiki/Indentation_style#1TBS).
+* **1.6** Place blank lines between all file and class level declarations (class, protocol, func, enum)
 
 ```swift
 class SomeClass {
@@ -96,6 +97,7 @@ let myValue = 20 + (30 / 2) * 3
 if 1 + 1 == 3 {
     fatalError("The universe is broken.")
 }
+
 func pancake(with syrup: Syrup) -> Pancake {
     /* ... */
 }
@@ -198,9 +200,11 @@ class MyClassName {
     enum AccessibilityIdentifier {
         static let pirateButton = "pirate_button"
     }
+
     enum SillyMathConstant {
         static let indianaPi = 3
     }
+
     static let shared = MyClassName()
 
     // NOT PREFERRED
@@ -218,9 +222,11 @@ class MyClassName {
 
 ```swift
 class SomeClass<Model> { /* ... */ }
+
 protocol Modelable {
     associatedtype Model
 }
+
 protocol Sequence {
     associatedtype IteratorType: Iterator
 }
@@ -246,7 +252,6 @@ class RoundAnimatingButton: UIButton {
     func startAnimating() {
         let firstSubview = subviews.first
     }
-
 }
 
 // NOT PREFERRED
@@ -286,7 +291,6 @@ class ConnectionTableViewCell: UITableViewCell {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameLabel: UILabel!
-
 }
 
 // NOT PREFERRED
@@ -638,11 +642,12 @@ var computedProperty: String {
     if someBool {
         return "I'm a mighty pirate!"
     }
+
     return "I'm selling these fine leather jackets."
 }
 ```
 
-* **3.7.2** When using `get {}`, `set {}`, `willSet`, and `didSet`, indent these blocks.
+* **3.7.2** When using `get {}`, `set {}`, `willSet`, and `didSet`, indent these blocks, do not put blank lines betwen them.
 * **3.7.3** Though you can create a custom name for the new or old value for `willSet`/`didSet` and `set`, use the standard `newValue`/`oldValue` identifiers that are provided by default.
 
 ```swift
@@ -777,6 +782,7 @@ func printSomeFile() {
         print("Unable to open file \(filename).")
         return
     }
+
     print(fileContents)
 }
 ```
@@ -872,6 +878,7 @@ if let monkeyIsland = monkeyIsland {
 if monkeyIsland == nil {
     return
 }
+
 bookVacation(on: monkeyIsland!)
 bragAboutVacation(at: monkeyIsland!)
 ```
@@ -948,7 +955,6 @@ guard let thingThree = thingThree else {
 ```
 
 * **3.11.7** On guard statements, prefer to maintain the return statement inline if the guard has a single statement and the returned value is reduced.
-
 
 ```swift
 // PREFERRED
@@ -1077,7 +1083,7 @@ func myFunction() {
 
 * **4.2.1** Always leave a space after `//`.
 * **4.2.2** Always leave comments on their own line.
-* **4.2.3** When using `MARK`s, leave a empty line before and after the comment.
+* **4.2.3** When using `MARK:`s, leave a empty line before and after the comment.
 * **4.2.4** Use `// MARK: - Whatever` for global type definitions (excluding nested types).
 * **4.2.4** Use `// MARK: Whatever` for nested type definitions, extensions, and access levels.
 
@@ -1117,7 +1123,7 @@ class User {
     
 }
 
-// MARK: Identifiable
+// MARK: - Identifiable
 
 extension User: Identifiable {
 
@@ -1126,5 +1132,4 @@ extension User: Identifiable {
     var id: String { socialSecurityNumber }
 
 }
-    
 ```
