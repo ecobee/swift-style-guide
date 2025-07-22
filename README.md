@@ -35,11 +35,23 @@ This guide was last updated for Swift 3.0 on September 26th, 2017.
 * **1.3** Ensure that there is a newline at the end of every file.
 * **1.4** Ensure that there is no trailing whitespace anywhere (Xcode->Preferences->Text Editing->Automatically trim trailing whitespace + Including whitespace-only lines).
 * **1.5** Do not place opening braces on new lines - we use the [1TBS style](https://en.m.wikipedia.org/wiki/Indentation_style#1TBS).
-* **1.6** Place blank lines between all file and class level declarations (class, protocol, func, enum)
+* **1.6** Place empty lines around all multi-line declarations (class, protocol, func, enum)
 
 ```swift
 class SomeClass {
+    var foo = 1
+    var bar = 2
+
+    var longProperty: Int {
+        // Multi-line property requires empty lines above and below it
+        ...
+    }
+
+    var shortProperty: Int = 3
+    func method() -> Int { 4 }
+
     func someMethod() {
+        // Multi-line func requires empty lines above and below it
         if x == y {
             /* ... */
         } else if x == z {
@@ -49,7 +61,6 @@ class SomeClass {
         }
     }
 
-    /* ... */
 }
 ```
 
@@ -983,16 +994,27 @@ guard let thingOne = thingOne else { return foo?.value != nil ? true : false }
 
 ### 3.12 Property Wrappers and Attached Macros
 
-When adding property wrappers or attached macros (uses `@` symbol) to your code, they should appear on a line above class and func declarations, and on the same line as property declarations.
+When adding property wrappers or attached macros (uses `@` symbol) to your code, they should appear on the same line as single line properties/functions, or on a line above multi-line properties/functions.
 
 ```swift
 @MainActor @Model
-class UIUpdater { ... }
-
-@MainActor @ViewBuilder
-func makeView() { ... }
+class UIUpdater {
+    ...
+}
 
 @MainActor @State var number = 1
+
+@MainActor @State
+var number2: Int {
+    ...
+}
+
+@MainActor @ViewBuilder func makeView() { EmptyView() }
+
+@MainActor @ViewBuilder
+func makeView2() {
+    ...
+}
 ```
 
 ## 4. Documentation/Comments
