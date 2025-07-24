@@ -142,7 +142,8 @@ if myFirstValue > (mySecondValue + myThirdValue)
 someFunctionWithManyArguments(
     firstArgument: "Hello, I am a string",
     secondArgument: resultFromSomeFunction(),
-    thirdArgument: someOtherLocalProperty)
+    thirdArgument: someOtherLocalProperty
+)
 ```
 
 * **1.11** When dealing with an implicit array or dictionary large enough to warrant splitting it into multiple lines, treat the `[` and `]` as if they were braces in a method, `if` statement, etc. Closures in a method should be treated similarly.
@@ -160,7 +161,8 @@ someFunctionWithABunchOfArguments(
     ],
     someClosure: { parameter1 in
         print(parameter1)
-    })
+    }
+)
 ```
 
 * **1.12** Prefer using local constants or other mitigation techniques to avoid multi-line predicates where possible.
@@ -651,10 +653,10 @@ Even when using method #2, add `// MARK:` statements anyway for easier readabili
 ```swift
 var computedProperty: String {
     if someBool {
-        return "I'm a mighty pirate!"
+         "I'm a mighty pirate!"
+    } else {
+        "I'm selling these fine leather jackets."
     }
-
-    return "I'm selling these fine leather jackets."
 }
 ```
 
@@ -674,9 +676,10 @@ var storedProperty: String = "I'm selling these fine leather jackets." {
 var computedProperty: String  {
     get {
         if someBool {
-            return "I'm a mighty pirate!"
+             "I'm a mighty pirate!"
+        } else {
+            storedProperty
         }
-        return storedProperty
     }
     set {
         storedProperty = newValue
@@ -994,7 +997,7 @@ guard let thingOne = thingOne else { return foo?.value != nil ? true : false }
 
 ### 3.12 Property Wrappers and Attached Macros
 
-When adding property wrappers or attached macros (uses `@` symbol) to your code, they should appear on the same line as single line properties/functions, or on a line above multi-line properties/functions.
+When adding property wrappers or attached macros (uses `@` symbol) to your code, they should appear on the same line as properties, or on a line above type definitions and functions.
 
 ```swift
 @MainActor @Model
@@ -1004,17 +1007,12 @@ class UIUpdater {
 
 @MainActor @State var number = 1
 
-@MainActor @State
-var number2: Int {
+@MainActor @State var number2: Int {
     ...
 }
-
-@MainActor @ViewBuilder func makeView() { EmptyView() }
 
 @MainActor @ViewBuilder
-func makeView2() {
-    ...
-}
+func makeView() { EmptyView() }
 ```
 
 ## 4. Documentation/Comments
