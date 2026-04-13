@@ -121,8 +121,8 @@ func pancake(with syrup: Syrup) -> Pancake {
 func myFunctionWithManyParameters(
     parameterOne: String,
     parameterTwo: String,
-    parameterThree: String)
-{
+    parameterThree: String
+) {
     // Xcode indents to here for this kind of statement
     print("\(parameterOne) \(parameterTwo) \(parameterThree)")
 }
@@ -741,11 +741,15 @@ doSomething(1.0) { (parameter1) in
 }
 
 // no trailing closure
-doSomething(1.0, success: { (parameter1) in
-    print("Success with \(parameter1)")
-}, failure: { (parameter1) in
-    print("Failure with \(parameter1)")
-})
+doSomething(
+    1.0,
+    success: { (parameter1) in
+        print("Success with \(parameter1)")
+    },
+    failure: { (parameter1) in
+        print("Failure with \(parameter1)")
+    }
+)
 ```
 
 * **3.8.5** Task closures should prefer to `await` funcs run on the main actor, rather than running the whole Task on the main actor.
@@ -912,10 +916,12 @@ guard isSuccessful else { return }
 guard !operationFailed else { return }
 ```
 
-* **3.11.4** If choosing between two different states, it makes more sense to use an `if` statement as opposed to a `guard` statement.
+* **3.11.4** If choosing between two different states, rather than a `guard` statement, prefer a ternary operator (`x ? y : z`) for a single line or `if` statement for multiple lines.
 
 ```swift
 // PREFERRED
+isFriendly ? "Hello" : "Goodbye"
+
 if isFriendly {
     print("Hello, nice to meet you!")
 } else {
